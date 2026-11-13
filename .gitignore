@@ -1,0 +1,29 @@
+# Build artifacts
+*.whl
+*.so
+*.pyd
+*.o
+*.obj
+build/
+dist/
+*.egg-info/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
