@@ -107,8 +107,11 @@ Build time: ~10–20 minutes depending on CPU.
 
 ## Step 7: Validate
 
+Run from the source's `tests/` directory (it requires sibling test files):
+
 ```powershell
-python validate_hip.py
+cd D:\WanGP\gguf-src-1.0.30\tests
+python validate_hip.py --output D:\WanGP\validation
 ```
 
 Expected output:
