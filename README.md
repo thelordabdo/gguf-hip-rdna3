@@ -29,7 +29,23 @@ The `test_dispatch.py` script in this repo verifies that WanGP's GGUF dispatch p
 - **PyTorch:** 2.13.0+rocm10.1.0
 - **Python:** 3.12.10
 
-## Quick Start
+## Download Prebuilt Wheel
+
+A prebuilt wheel for **gfx1100** is available as a [release asset](https://github.com/thelordabdo/gguf-hip-rdna3/releases/tag/gguf-v1.0.30-gfx1100):
+
+```
+llamacpp_gguf_cuda-1.0.30+torch213rocm101py312-cp312-cp312-win_amd64.whl  (5.25 MB)
+```
+
+Requires: Python 3.12, torch 2.13.0+rocm10.1.0, Windows x64, RDNA3 GPU.
+
+```powershell
+pip install llamacpp_gguf_cuda-1.0.30+torch213rocm101py312-cp312-cp312-win_amd64.whl
+```
+
+Validation logs and JSON results are also included in the [release](https://github.com/thelordabdo/gguf-hip-rdna3/releases/tag/gguf-v1.0.30-gfx1100).
+
+## Quick Start (Build from Source)
 
 ```bash
 # 1. Install Python 3.12 (winget)
