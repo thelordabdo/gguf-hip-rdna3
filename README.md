@@ -2,11 +2,11 @@
 
 Building `llamacpp_gguf_cuda` GGUF quantization kernels from source for **AMD RDNA3** GPUs — enabling fast llama.cpp-style packed quantized inference (IQ3_S, Q4_K, Q5_K, Q8_0, PTQ1_0, and more) on cards that have **no official prebuilt wheel**.
 
-> **Why this exists:** The official `llamacpp_gguf_cuda` wheels only target **RDNA4** (`gfx1200`/`gfx1201`). RDNA3 users (RX 7900 XTX, RX 7900 XT, RX 7800 XT, RX 7700 XT) have no prebuilt option — they fall back to slow PyTorch dense weight materialization. This repository documents the complete, verified process to build the HIP kernels from source for `gfx1100`.
+> **Why this exists:** The official [`llamacpp_gguf_cuda` wheels](https://github.com/deepbeepmeep/kernels/releases/tag/gguf-v1.0.30) only target **RDNA4** (`gfx1200`/`gfx1201`). RDNA3 users (RX 7900 XTX, RX 7900 XT, RX 7800 XT, RX 7700 XT) have no prebuilt option — they fall back to slow PyTorch dense weight materialization. The official release notes confirm the HIP wheels were *"checked without ROCm PyTorch or an AMD GPU"* — **this repository documents the first real AMD validation** and the complete process to build the HIP kernels from source for `gfx1100`.
 
 ## Use Case: WanGP
 
-This build was created for **WanGP** — a local AI application that uses `llamacpp_gguf_cuda` for GGUF model inference. Without the HIP kernels, WanGP on RDNA3 falls back to PyTorch dense matmul, which is 5–10× slower for quantized models. With the kernels built in this repo, WanGP achieves proper packed quantized inference on RDNA3.
+This build was created for **[WanGP](https://github.com/deepbeepmeep/WanGP)** — a local AI application that uses `llamacpp_gguf_cuda` for GGUF model inference. Without the HIP kernels, WanGP on RDNA3 falls back to PyTorch dense matmul, which is 5–10× slower for quantized models. With the kernels built in this repo, WanGP achieves proper packed quantized inference on RDNA3.
 
 The `test_dispatch.py` script in this repo verifies that WanGP's GGUF dispatch predicates correctly route to the HIP fast path.
 
@@ -42,9 +42,8 @@ D:\WanGP\build-env\Scripts\activate
 # 3. Install ROCm PyTorch
 pip install torch --index-url https://stable.repo.amd.com/rocm/whl-next/ --extra-index-url https://pypi.org/simple/
 
-# 4. Obtain the llamacpp_gguf_cuda source (v1.0.30)
-#    The source is not publicly available on PyPI.
-#    See docs/BUILD_GUIDE.md for details.
+# 4. Clone the GGUF source (v1.0.30)
+git clone --depth 1 --branch gguf-v1.0.30 https://github.com/deepbeepmeep/kernels.git D:\WanGP\gguf-src-1.0.30
 cd D:\WanGP\gguf-src-1.0.30
 
 # 5. Initialize ROCm SDK

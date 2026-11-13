@@ -56,15 +56,16 @@ print(torch.cuda.is_available())  # True
 print(torch.cuda.get_device_name(0))  # AMD Radeon RX 7900 XT
 ```
 
-## Step 4: Obtain GGUF Source
+## Step 4: Clone GGUF Source
 
-The `llamacpp_gguf_cuda` source (v1.0.30) is **not publicly available** on PyPI or GitHub. It is distributed through the WanGP project. Place the source in:
+The source is publicly available at [`deepbeepmeep/kernels`](https://github.com/deepbeepmeep/kernels). Clone the `gguf-v1.0.30` tag:
 
+```powershell
+git clone --depth 1 --branch gguf-v1.0.30 https://github.com/deepbeepmeep/kernels.git D:\WanGP\gguf-src-1.0.30
+cd D:\WanGP\gguf-src-1.0.30
 ```
-D:\WanGP\gguf-src-1.0.30\
-```
 
-The source directory should contain:
+The source directory contains:
 ```
 gguf-src-1.0.30/
 ├── setup.py

@@ -71,6 +71,11 @@ True
 ## Significance
 
 This is the **first real AMD validation** of `llamacpp_gguf_cuda` HIP kernels
-on RDNA3 hardware. Previous validations were limited to RDNA4 (gfx1200/gfx1201)
-or CPU-only tests. This build confirms that the full kernel pipeline
-(linear, attention, padding, Prism) works correctly on gfx1100.
+on RDNA3 hardware. The official [release notes](https://github.com/deepbeepmeep/kernels/releases/tag/gguf-v1.0.30)
+state that the HIP wheels were *"checked without ROCm PyTorch or an AMD GPU"*
+and their native extensions *"were not loaded for this release."* The official
+wheels only target `gfx1200`/`gfx1201` (RDNA4) — there is no `gfx1100` wheel.
+
+This build confirms that the full kernel pipeline (linear, attention, padding,
+Prism) works correctly on `gfx1100` (RDNA3) with real ROCm PyTorch and a real
+AMD GPU.
