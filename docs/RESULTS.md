@@ -62,8 +62,7 @@ True
 
 | Metric | Before (PyTorch fallback) | After (HIP kernels) |
 |---|---|---|
-| Decode speed | ~1–1.5 tok/s | ~6–10 tok/s |
-| VRAM usage | ~24 GB (dense) | ~12 GB (packed) |
+| Decode speed (27B IQ3_S) | ~1–1.5 tok/s | ~6–10 tok/s |
 | Fast path active | ❌ | ✅ |
 
 > **Note:** First run includes one-time Triton JIT compilation (~5 min total).

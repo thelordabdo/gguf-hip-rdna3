@@ -56,11 +56,27 @@ print(torch.cuda.is_available())  # True
 print(torch.cuda.get_device_name(0))  # AMD Radeon RX 7900 XT
 ```
 
-## Step 4: Clone GGUF Source
+## Step 4: Obtain GGUF Source
 
-```powershell
-git clone --depth 1 https://github.com/.../llamacpp_gguf_cuda.git D:\WanGP\gguf-src-1.0.30
-cd D:\WanGP\gguf-src-1.0.30
+The `llamacpp_gguf_cuda` source (v1.0.30) is **not publicly available** on PyPI or GitHub. It is distributed through the WanGP project. Place the source in:
+
+```
+D:\WanGP\gguf-src-1.0.30\
+```
+
+The source directory should contain:
+```
+gguf-src-1.0.30/
+├── setup.py
+├── hip_build.py
+├── build_hip.ps1
+├── src/llamacpp_gguf_cuda/
+├── tests/
+│   ├── validate_hip.py
+│   ├── validate_release.py
+│   ├── test_ptq1.py
+│   └── test_prism_hadamard.py
+└── _vendor/llama.cpp/
 ```
 
 ## Step 5: Initialize ROCm SDK
