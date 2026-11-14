@@ -1,11 +1,12 @@
-# Build artifacts
+# Python build artifacts (root-level setuptools output; the `scripts/` folder
+# of this repository is intentionally NOT ignored)
 *.whl
 *.so
 *.pyd
 *.o
 *.obj
-build/
-dist/
+/build/
+/dist/
 *.egg-info/
 
 # Python

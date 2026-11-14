@@ -1,0 +1,54 @@
+NOTICE — Licensing of this repository
+=====================================
+
+This repository contains material under **two different licenses**. Please
+read this carefully before using the prebuilt wheel.
+
+1. WanGP Community License 2.0
+   Applies to:
+     - The prebuilt wheel `llamacpp_gguf_cuda-1.0.30+torch213rocm101py312-cp312-cp312-win_amd64.whl`
+       (a recompilation of unmodified upstream source for `gfx1100`)
+     - `scripts/validate_hip.py` (copied verbatim from the upstream `tests/` suite)
+   Full text: `LICENSES/WanGP-Community-License-2.0.txt` (also copied to `LICENSE`).
+   Upstream source: https://github.com/deepbeepmeep/kernels (tag `gguf-v1.0.30`)
+   Copyright: the WanGP / Wan2GP licensor (deepbeepmeep).
+
+   This material may be used and redistributed free of charge under the
+   WanGP Community License 2.0. It is NOT MIT-licensed and may not be sold,
+   white-labelled, embedded in a paid product, or offered as a paid hosted or
+   API service without a separate written license from the licensor.
+
+2. MIT License
+   Applies to the original documentation and scripts authored for this
+   repository: `README.md`, `docs/`, `scripts/test_dispatch.py`.
+   Full text: `LICENSES/MIT.txt`. Copyright (c) 2026 thelordabdo.
+
+Redistribution compliance (WanGP Community License 2.0, Section 4.1)
+--------------------------------------------------------------------
+In accordance with Section 4.1, this redistribution:
+
+  (a) includes a copy of the WanGP Community License 2.0 — see `LICENSE` and
+      `LICENSES/WanGP-Community-License-2.0.txt`;
+  (b) preserves attribution to the upstream project and links to it from
+      `README.md`;
+  (c) makes no claim over third-party materials; `llama.cpp` and other
+      vendored components keep their own licenses;
+  (d) states what was changed and when: the upstream source at tag
+      `gguf-v1.0.30` was **not modified**. It was **recompiled** for a
+      different GPU target (`gfx1100` / RDNA3) instead of the officially
+      published `gfx1200`/`gfx1201`, on 2026-11-12, on Windows 11 with
+      Python 3.12.10, ROCm 7.2 (HIP 7.16.26385) and torch 2.13.0+rocm10.1.0.
+      See `docs/BUILD_GUIDE.md` for the exact, reproducible steps;
+  (e) does not imply sponsorship, endorsement, or affiliation with the
+      licensor; and
+  (f) imposes no terms that would restrict rights recipients hold directly
+      under third-party licenses.
+
+This redistribution is free and non-monetised. It is disclosed to the
+upstream project at:
+https://github.com/deepbeepmeep/WanGP/issues/2641
+
+NO WARRANTY
+-----------
+The wheel is provided "as is". It was validated on exactly one machine
+(RX 7900 XT, gfx1100). See the warranty disclaimers in both license texts.

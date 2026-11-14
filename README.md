@@ -6,7 +6,7 @@ Building `llamacpp_gguf_cuda` GGUF quantization kernels from source for **AMD RD
 
 ## Use Case: WanGP
 
-This build was created for **[WanGP](https://github.com/deepbeepmeep/WanGP)** — a local AI application that uses `llamacpp_gguf_cuda` for GGUF model inference. Without the HIP kernels, WanGP on RDNA3 falls back to PyTorch dense matmul, which is 5–10× slower for quantized models. With the kernels built in this repo, WanGP achieves proper packed quantized inference on RDNA3.
+This build was created for **[WanGP](https://github.com/deepbeepmeep/WanGP)** — a local AI application that uses `llamacpp_gguf_cuda` for GGUF model inference. Without the HIP kernels, WanGP on RDNA3 falls back to PyTorch dense matmul, which is 4–10× slower for quantized models. With the kernels built in this repo, WanGP achieves proper packed quantized inference on RDNA3.
 
 The `test_dispatch.py` script in this repo verifies that WanGP's GGUF dispatch predicates correctly route to the HIP fast path.
 
@@ -82,8 +82,8 @@ gguf-hip-rdna3/
 ├── README.md                  ← This file
 ├── LICENSE
 ├── .gitignore
-├── build/
-│   ├── validate_hip.py        ← Kernel validation script (from llamacpp_gguf_cuda source)
+├── scripts/
+│   ├── validate_hip.py        ← Kernel validation driver (from the upstream tests/ suite)
 │   └── test_dispatch.py       ← WanGP dispatch predicate test
 ├── docs/
 │   ├── BUILD_GUIDE.md         ← Complete step-by-step build guide
@@ -113,4 +113,9 @@ Prism (ternary) kernels: `PTQ1_0` supported with `prism_hadamard` callable.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+This repository contains material under **two licenses** — see [`NOTICE`](NOTICE) for the full breakdown:
+
+- **The wheel and `scripts/validate_hip.py`: WanGP Community License 2.0** — the kernels are compiled from the upstream [`deepbeepmeep/kernels`](https://github.com/deepbeepmeep/kernels) source, which is licensed under the [WanGP Community License 2.0](LICENSES/WanGP-Community-License-2.0.txt) (free to use and redistribute, not to sell). Copyright the WanGP licensor (deepbeepmeep).
+- **Documentation and `scripts/test_dispatch.py`: MIT** — see [`LICENSES/MIT.txt`](LICENSES/MIT.txt). Copyright (c) 2026 thelordabdo.
+
+The wheel is a **recompilation of unmodified upstream source** for `gfx1100`; no upstream code was changed. This work is disclosed upstream at [WanGP issue #2641](https://github.com/deepbeepmeep/WanGP/issues/2641).

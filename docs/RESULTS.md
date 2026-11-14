@@ -65,8 +65,12 @@ True
 | Decode speed (27B IQ3_S) | ~1–1.5 tok/s | ~6–10 tok/s |
 | Fast path active | ❌ | ✅ |
 
-> **Note:** First run includes one-time Triton JIT compilation (~5 min total).
-> Subsequent runs skip compilation and are faster.
+> **Note:** The first run pays a large one-time Triton JIT cost before decoding
+> starts. Measured on this machine (RX 7900 XT, Ryzen 7 3700X):
+> `l2norm` 124 s, `chunk_gated_delta_rule` 94 s, `q8_grouped_partials_kernel`
+> 167 s, `q8_paged_prefill_kernel` 133 s — **~8.6 minutes for those four kernels
+> alone**, plus further autotuning. Compilation results are cached, so subsequent
+> runs start fast and decode at the steady-state rate above.
 
 ## Significance
 
