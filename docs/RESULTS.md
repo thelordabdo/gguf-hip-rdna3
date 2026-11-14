@@ -14,26 +14,14 @@ PASS 1.0.30+torch213rocm101py312: 252 linear configurations, 12 attention cases,
 
 ### Linear Kernel Checks (all passed)
 
-| Quantization Type | Shape | Status |
-|---|---|---|
-| Q2_K | (128, 512) | ✅ PASS |
-| Q3_K | (128, 512) | ✅ PASS |
-| Q4_K | (128, 512) | ✅ PASS |
-| Q5_K | (128, 512) | ✅ PASS |
-| Q6_K | (128, 512) | ✅ PASS |
-| Q4_0 | (128, 512) | ✅ PASS |
-| Q4_1 | (128, 512) | ✅ PASS |
-| Q5_0 | (128, 512) | ✅ PASS |
-| Q5_1 | (128, 512) | ✅ PASS |
-| Q8_0 | (128, 512) | ✅ PASS |
-| IQ2_S | (128, 512) | ✅ PASS |
-| IQ3_S | (128, 512) | ✅ PASS |
-| IQ1_S | (128, 512) | ✅ PASS |
-| IQ2_XS | (128, 512) | ✅ PASS |
-| IQ2_XXS | (128, 512) | ✅ PASS |
-| IQ3_XXS | (128, 512) | ✅ PASS |
-| IQ4_NL | (128, 512) | ✅ PASS |
-| IQ4_XS | (128, 512) | ✅ PASS |
+Each of the 18 quantization types below was tested across **2 dtypes** (`torch.float16`, `torch.bfloat16`) and **7 batch sizes** (rows = 1, 2, 4, 8, 17, 64, 129): 18 × 2 × 7 = **252 linear configurations**, all within tolerance (`relative_rms` < 0.025):
+
+| Quantization Type | Status |
+|---|---|
+| Q2_K, Q3_K, Q4_K, Q5_K, Q6_K | ✅ PASS |
+| Q4_0, Q4_1, Q5_0, Q5_1, Q8_0 | ✅ PASS |
+| IQ1_S, IQ2_S, IQ2_XS, IQ2_XXS | ✅ PASS |
+| IQ3_S, IQ3_XXS, IQ4_NL, IQ4_XS | ✅ PASS |
 
 ### Attention & Padding
 
