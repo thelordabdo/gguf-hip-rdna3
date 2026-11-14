@@ -68,8 +68,9 @@ rocm-sdk init
 # 6. Build for gfx1100
 .\build_hip.ps1 -Python "D:\WanGP\build-env\Scripts\python.exe" -Architectures "gfx1100" -OutputDirectory "D:\WanGP\gguf-dist"
 
-# 7. Validate (run from the source tests/ directory)
-python tests\validate_hip.py --output D:\WanGP\validation
+# 7. Validate (must run from the source tests/ directory)
+cd D:\WanGP\gguf-src-1.0.30\tests
+python validate_hip.py --output D:\WanGP\validation
 
 # 8. Install in target environment
 pip install D:\WanGP\gguf-dist\llamacpp_gguf_cuda-1.0.30+torch213rocm101py312-cp312-cp312-win_amd64.whl
@@ -80,7 +81,11 @@ pip install D:\WanGP\gguf-dist\llamacpp_gguf_cuda-1.0.30+torch213rocm101py312-cp
 ```
 gguf-hip-rdna3/
 ├── README.md                  ← This file
-├── LICENSE
+├── LICENSE                    ← WanGP Community License 2.0 (governs the wheel)
+├── NOTICE                     ← Plain-language license split + redistribution compliance
+├── LICENSES/
+│   ├── WanGP-Community-License-2.0.txt
+│   └── MIT.txt                ← For the documentation in this repo
 ├── .gitignore
 ├── scripts/
 │   ├── validate_hip.py        ← Kernel validation driver (from the upstream tests/ suite)
